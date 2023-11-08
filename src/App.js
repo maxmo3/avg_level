@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import ToDoList from './components/todolist';
+import AvgItemLevelCalcPage from './components';
+
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <ToDoList />
+        <AvgItemLevelCalcPage />
         <a
           className='App-link'
           href='https://reactjs.org'
