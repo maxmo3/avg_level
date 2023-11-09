@@ -1,5 +1,6 @@
 import { React, useState } from 'react';
 import ItemBox from './ItemBox';
+import CharacterName from './CharacterName';
 
 const itemSlots = [
   'helmet',
@@ -16,22 +17,24 @@ const itemSlots = [
   'trinket2',
   'weapon',
 ];
+let total = 0;
 
 const AvgItemLevelCalcPage = () => {
   const [data, setData] = useState({});
+  const [charName, setCharName] = useState('');
 
   const onChange = (itemLevel, name) => {
     setData((localData) => ({ ...localData, [name]: itemLevel }));
     return;
   };
 
-  console.log(data);
+  const getCharName = (name) => {
+    setCharName(name);
+  };
 
   let result = Object.values(data)
-    .filter((value) => value != '')
+    .filter((value) => value !== '')
     .map((value) => parseInt(value));
-
-  let total = 0;
 
   for (const number of result) {
     total += number;
@@ -41,6 +44,10 @@ const AvgItemLevelCalcPage = () => {
 
   return (
     <div>
+      <CharacterName
+        value={charName}
+        onChange={getCharName}
+      />
       {itemSlots.map((name) => {
         return (
           <ItemBox
@@ -51,8 +58,9 @@ const AvgItemLevelCalcPage = () => {
           ></ItemBox>
         );
       })}
+
       <p>Total: {total}</p>
-      <p>Average: {average.toFixed(2)}</p>
+      <p>{`${charName}'s average = ${average.toFixed(2)}`}</p>
     </div>
   );
 };
