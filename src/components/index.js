@@ -1,6 +1,7 @@
 import { React, useState } from 'react';
 import ItemBox from './ItemBox';
 import CharacterName from './CharacterName';
+import './avgLevel.css';
 
 const itemSlots = [
   'helmet',
@@ -17,7 +18,6 @@ const itemSlots = [
   'trinket2',
   'weapon',
 ];
-let total = 0;
 
 const AvgItemLevelCalcPage = () => {
   const [data, setData] = useState({});
@@ -36,6 +36,8 @@ const AvgItemLevelCalcPage = () => {
     .filter((value) => value !== '')
     .map((value) => parseInt(value));
 
+  let total = 0;
+
   for (const number of result) {
     total += number;
   }
@@ -43,24 +45,27 @@ const AvgItemLevelCalcPage = () => {
   const average = total / itemSlots.length;
 
   return (
-    <div>
-      <CharacterName
-        value={charName}
-        onChange={getCharName}
-      />
-      {itemSlots.map((name) => {
-        return (
-          <ItemBox
-            title={name}
-            onChange={(itemLevel) => {
-              onChange(itemLevel, name);
-            }}
-          ></ItemBox>
-        );
-      })}
+    <div className='div-center'>
+      <div>
+        <CharacterName
+          value={charName}
+          onChange={getCharName}
+        />
+      </div>
 
-      <p>Total: {total}</p>
-      <p>{`${charName}'s average = ${average.toFixed(2)}`}</p>
+      <div className='item-slots'>
+        {itemSlots.map((name) => {
+          return (
+            <ItemBox
+              title={name}
+              onChange={(itemLevel) => {
+                onChange(itemLevel, name);
+              }}
+            ></ItemBox>
+          );
+        })}
+      </div>
+      <div className='avg-value'>{`${charName} average item level = ${average.toFixed(2)}`}</div>
     </div>
   );
 };

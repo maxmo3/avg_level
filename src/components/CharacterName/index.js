@@ -1,4 +1,6 @@
 import { React, useState, useEffect } from 'react';
+import { TextField } from '@mui/material';
+import './characterName.css'
 
 const CharacterName = (props) => {
   const [charName, setCharName] = useState('');
@@ -8,14 +10,14 @@ const CharacterName = (props) => {
   }, [charName]);
 
   return (
-    <div>
-      <label>
-        Character name:
-        <input
-          value={charName}
-          onChange={(x) => setCharName(x.target.value)}
-        ></input>
-      </label>
+    <div className='char-name'>
+      <TextField
+        id='filled-basic'
+        label='Character name'
+        variant='filled'
+        value={charName}
+        onChange={(x) => setCharName(x.target.value)}
+      />
     </div>
   );
 };

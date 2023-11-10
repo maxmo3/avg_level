@@ -1,0 +1,22 @@
+.item-slots {
+  display: flex;
+  /* flex-direction: column; */
+  /* flex-flow: column wrap; */
+  flex-wrap: wrap;
+  width: 600px;
+  height: 500px;
+  gap: 15px 100px;
+  justify-content: center;  
+}
+
+.avg-value {
+  margin-top: 10px;
+  font-size: 60px;
+}
+
+.div-center {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
